@@ -21,14 +21,16 @@ try {
         exit(0);
     }
     printf("Parsed %d products from %s\n", count($products), $file);
-    // Print each product
-    foreach ($products as $product) {
-        echo $product . PHP_EOL;
-    }
+    echo PHP_EOL;
+    // Print each product uncomment the following lines to see the products on the console
+    // foreach ($products as $product) {
+    //     echo $product . PHP_EOL;
+    // }
 
     if ($output) {
         $parser->exportUniqueCombinations($products, $output);
-        echo "Unique combinations exported to $output\n";
+        echo "Unique combinations exported to $output\n" . PHP_EOL;
+
     }
 
 } catch (Exception $e) {
