@@ -51,7 +51,14 @@ class ProductParser
             }
             $counts[$key]['count']++;
         }
-
+        $dir = dirname($outputFile);
+        if (! is_dir($dir)) {
+            mkdir($dir, 0777, true); // Creates the directory recursively
+        }
+        if (file_exists($outputFile)) {
+            unlink($outputFile); // Remove the file if it already exists
+        }
+        // Open the output file for writing
         $handle = fopen($outputFile, 'w');
         if (! $handle) {
             throw new Exception("Unable to write to file: $outputFile");
